@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option java_outer_classname = "HelloWorldProto";
+option java_multiple_files = true;
+option java_package = "common.agriaku.grpc_kotlin_test_app";
+
+option go_package = "../generated/go/grpc-go-test-app";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHelloList (HelloRequestList) returns (HelloReplyList) {}
+  rpc SayHelloNonPrimitiveList (HelloRequestNonPrimitiveList) returns (HelloReplyNonPrimitiveList) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string greeting = 1;
+}
+
+message HelloRequestList {
+  repeated string names = 1;
+}
+
+message HelloReplyList {
+  repeated string greetings = 1;
+}
+
+message HelloRequestNonPrimitiveList {
+  repeated NonPrimitiveName names = 1;
+}
+
+message NonPrimitiveName {
+  string name = 1;
+}
+
+message HelloReplyNonPrimitiveList {
+  repeated NonPrimitiveMessage NonPrimitiveMessages = 1;
+}
+
+message NonPrimitiveMessage {
+  string greeting = 1;
+}
+
